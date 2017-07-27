@@ -7,4 +7,8 @@ var basicCard = require('./BasicCard');
 // variable to keep tally of the quiz
 var tally = 0;
 
-fs.readFile()
+//fs.readFile()
+//inquirer prompt questions / answers 
+// to be acquired from a different file
+
+inquirer.prompt()
