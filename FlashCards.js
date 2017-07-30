@@ -14,23 +14,44 @@ var tally = 0;
 //inquirer prompt questions / answers 
 // to be acquired from a different file
 
- function createCard(){
+ function startFlashcards(){
  inquirer.prompt([
 {
-	name: "front",
-	message: "What is the full text of the question?"
-},
-{
-	name: "back",
-	message: "What is the cloze deletion of that full text ?"
+	type: "list",
+	name: "action",
+	message: "What would you like to do?",
+	choices: ['create-basic-cards','create-cloze-cards','basic-quiz','cloze-quiz','quit']
 }
-]).then(function(answers){
-	var newCard = new BasicCard(answers.front, answers.back);
-	newCard.printInfo();
+]).then(function(choice){
+	if (choice.action === 'create-basic-cards'){
+		createBasicCard();
+	} else if (choice.action === 'create-cloze-cards') {
+		createClozeCard();
+	} else if (choice.action === 'basic-quiz'){
+		runBasicQuiz();
+	} else if (choice.action === 'cloze-quiz'){
+		runClozeQuiz();
+	} else if (choice.action === 'quit'){
+		console.log("Have a great day.");
+	}
+	// var newCard = new BasicCard(answers.front, answers.back);
+	// newCard.printInfo();
 // 	flashCards.push(newCard);
 });
 };
 	
 // 	);
-createCard();
+startFlashcards();
 // };
+function createBasicCard(){
+	inquirer.prompt([
+	{
+		type: "input",
+		name: "total",
+		message: "How many flashcards?",
+
+	}
+	]).then(function(input){
+		console.log("Making " + parseInt(input.total) + " flashcards.");
+	});
+}
