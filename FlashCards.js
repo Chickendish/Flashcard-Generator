@@ -1,8 +1,8 @@
 // npm modules to install
 
 var inquirer = require('inquirer');
-var fs = require('fs');
-var basicCard = require('./BasicCard');
+//var fs = require('fs');
+var BasicCard = require('./BasicCard');
 
 // array to store new flashcards
 var flashCards = [];
@@ -14,15 +14,23 @@ var tally = 0;
 //inquirer prompt questions / answers 
 // to be acquired from a different file
 
-inquirer.prompt([
+ function createCard(){
+ inquirer.prompt([
 {
 	name: "front",
-	message: "What is the question?"
+	message: "What is the full text of the question?"
 },
 {
 	name: "back",
-	message: "What is the answer?"
-}]).then(function(answers)
+	message: "What is the cloze deletion of that full text ?"
+}
+]).then(function(answers){
 	var newCard = new BasicCard(answers.front, answers.back);
-	flashCards.push(newCard);
-	)
+	newCard.printInfo();
+// 	flashCards.push(newCard);
+});
+};
+	
+// 	);
+createCard();
+// };

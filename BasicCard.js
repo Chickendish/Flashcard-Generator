@@ -1,7 +1,9 @@
 function BasicCard(front, back){
 	this.front = front;
 	this.back = back;
-	this.printInfo = function(){
+	};
+
+	BasicCard.prototype.printInfo = function(){
 		console.log("Front: " + this.front + "\nBack: " + this.back);
 	};
 	// this.answer = function(answer){
@@ -10,7 +12,5 @@ function BasicCard(front, back){
 	// 		tally++;
 	// 	}
 	// }
-
-};
 
 module.exports = BasicCard;
